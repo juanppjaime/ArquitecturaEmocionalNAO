@@ -1,0 +1,19 @@
+﻿# Secrets
+.env
+*.env
+
+# ROS2 / colcon
+build/
+install/
+log/
+
+# Python env
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,1704 @@
+📋 Servicios NAO (Speech, Navigation, Miscellaneous, Perception)
+==============================================================
+=== /naoqi_miscellaneous_node/describe_parameters ===
+Tipo: rcl_interfaces/srv/DescribeParameters
+# A list of parameters of which to get the descriptor.
+string[] names
+
+---
+# A list of the descriptors of all parameters requested in the same order
+# as they were requested. This list has the same length as the list of
+# parameters requested.
+ParameterDescriptor[] descriptors
+	string name
+	uint8 type
+	string description
+	#
+	string additional_constraints
+	bool read_only false
+	bool dynamic_typing false
+	#
+	FloatingPointRange[<=1] floating_point_range
+		float64 from_value
+		float64 to_value
+		#
+		#
+		#
+		#
+		float64 step
+	IntegerRange[<=1] integer_range
+		int64 from_value
+		int64 to_value
+		#
+		#
+		#
+		uint64 step
+
+=== /naoqi_miscellaneous_node/get_parameter_types ===
+Tipo: rcl_interfaces/srv/GetParameterTypes
+# A list of parameter names.
+# TODO(wjwwood): link to parameter naming rules.
+string[] names
+
+---
+# List of types which is the same length and order as the provided names.
+#
+# The type enum is defined in ParameterType.msg. ParameterType.PARAMETER_NOT_SET
+# indicates that the parameter is not currently set.
+uint8[] types
+
+=== /naoqi_miscellaneous_node/get_parameters ===
+Tipo: rcl_interfaces/srv/GetParameters
+# TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter "names"
+# in general, then link to that.
+#
+# For more information about parameters and naming rules, see:
+# https://design.ros2.org/articles/ros_parameters.html
+# https://github.com/ros2/design/pull/241
+
+# A list of parameter names to get.
+string[] names
+
+---
+# List of values which is the same length and order as the provided names. If a
+# parameter was not yet set, the value will have PARAMETER_NOT_SET as the
+# type.
+ParameterValue[] values
+	uint8 type
+	bool bool_value
+	int64 integer_value
+	float64 double_value
+	string string_value
+	byte[] byte_array_value
+	bool[] bool_array_value
+	int64[] integer_array_value
+	float64[] double_array_value
+	string[] string_array_value
+
+=== /naoqi_miscellaneous_node/get_type_description ===
+Tipo: type_description_interfaces/srv/GetTypeDescription
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
+string type_name
+
+# REP-2011 RIHS hash string.
+string type_hash
+
+# Whether to return the original idl/msg/etc. source file(s) in the response.
+bool include_type_sources true
+---
+# True if the type description information is available and populated in the response.
+# If false, all other fields except `failure_reason` are considered undefined.
+bool successful
+# If `successful` is false, contains a reason for failure.
+# If `successful` is true, this is left empty.
+string failure_reason
+
+# The parsed type description which can be used programmatically.
+TypeDescription type_description
+	IndividualTypeDescription type_description
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+	IndividualTypeDescription[] referenced_type_descriptions
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+
+# A list containing the interface definition source text of the requested type,
+# plus all types it recursively depends on.
+# Each source text is a copy of the original contents of the
+# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.
+# Sources can be matched with IndividualTypeDescriptions by their `type_name`.
+# The `encoding` field of each entry informs how to interpret its contents.
+TypeSource[] type_sources
+	string type_name
+	string encoding
+	string raw_file_contents
+
+# Key-value pairs of extra information.
+KeyValue[] extra_information
+	string key
+	string value
+
+=== /naoqi_miscellaneous_node/list_parameters ===
+Tipo: rcl_interfaces/srv/ListParameters
+# Recursively get parameters with unlimited depth.
+uint64 DEPTH_RECURSIVE=0
+
+# The list of parameter prefixes to query.
+string[] prefixes
+
+# Relative depth from given prefixes to return.
+#
+# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.
+uint64 depth
+
+---
+# The list of parameter names and their prefixes.
+ListParametersResult result
+	string[] names
+	string[] prefixes
+
+=== /naoqi_miscellaneous_node/set_autonomous_state ===
+Tipo: std_srvs/srv/SetBool
+bool data # e.g. for hardware enabling / disabling
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_miscellaneous_node/set_parameters ===
+Tipo: rcl_interfaces/srv/SetParameters
+# A list of parameters to set.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting each parameter succeeded or not and why.
+SetParametersResult[] results
+	bool successful
+	string reason
+
+=== /naoqi_miscellaneous_node/set_parameters_atomically ===
+Tipo: rcl_interfaces/srv/SetParametersAtomically
+# A list of parameters to set atomically.
+#
+# This call will either set all values, or none of the values.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting all of the parameters succeeded or not and why.
+SetParametersResult result
+	bool successful
+	string reason
+
+=== /naoqi_miscellaneous_node/toggle_awareness ===
+Tipo: std_srvs/srv/SetBool
+bool data # e.g. for hardware enabling / disabling
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_miscellaneous_node/toggle_blinking ===
+Tipo: std_srvs/srv/SetBool
+bool data # e.g. for hardware enabling / disabling
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_navigation_node/describe_parameters ===
+Tipo: rcl_interfaces/srv/DescribeParameters
+# A list of parameters of which to get the descriptor.
+string[] names
+
+---
+# A list of the descriptors of all parameters requested in the same order
+# as they were requested. This list has the same length as the list of
+# parameters requested.
+ParameterDescriptor[] descriptors
+	string name
+	uint8 type
+	string description
+	#
+	string additional_constraints
+	bool read_only false
+	bool dynamic_typing false
+	#
+	FloatingPointRange[<=1] floating_point_range
+		float64 from_value
+		float64 to_value
+		#
+		#
+		#
+		#
+		float64 step
+	IntegerRange[<=1] integer_range
+		int64 from_value
+		int64 to_value
+		#
+		#
+		#
+		uint64 step
+
+=== /naoqi_navigation_node/get_parameter_types ===
+Tipo: rcl_interfaces/srv/GetParameterTypes
+# A list of parameter names.
+# TODO(wjwwood): link to parameter naming rules.
+string[] names
+
+---
+# List of types which is the same length and order as the provided names.
+#
+# The type enum is defined in ParameterType.msg. ParameterType.PARAMETER_NOT_SET
+# indicates that the parameter is not currently set.
+uint8[] types
+
+=== /naoqi_navigation_node/get_parameters ===
+Tipo: rcl_interfaces/srv/GetParameters
+# TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter "names"
+# in general, then link to that.
+#
+# For more information about parameters and naming rules, see:
+# https://design.ros2.org/articles/ros_parameters.html
+# https://github.com/ros2/design/pull/241
+
+# A list of parameter names to get.
+string[] names
+
+---
+# List of values which is the same length and order as the provided names. If a
+# parameter was not yet set, the value will have PARAMETER_NOT_SET as the
+# type.
+ParameterValue[] values
+	uint8 type
+	bool bool_value
+	int64 integer_value
+	float64 double_value
+	string string_value
+	byte[] byte_array_value
+	bool[] bool_array_value
+	int64[] integer_array_value
+	float64[] double_array_value
+	string[] string_array_value
+
+=== /naoqi_navigation_node/get_type_description ===
+Tipo: type_description_interfaces/srv/GetTypeDescription
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
+string type_name
+
+# REP-2011 RIHS hash string.
+string type_hash
+
+# Whether to return the original idl/msg/etc. source file(s) in the response.
+bool include_type_sources true
+---
+# True if the type description information is available and populated in the response.
+# If false, all other fields except `failure_reason` are considered undefined.
+bool successful
+# If `successful` is false, contains a reason for failure.
+# If `successful` is true, this is left empty.
+string failure_reason
+
+# The parsed type description which can be used programmatically.
+TypeDescription type_description
+	IndividualTypeDescription type_description
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+	IndividualTypeDescription[] referenced_type_descriptions
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+
+# A list containing the interface definition source text of the requested type,
+# plus all types it recursively depends on.
+# Each source text is a copy of the original contents of the
+# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.
+# Sources can be matched with IndividualTypeDescriptions by their `type_name`.
+# The `encoding` field of each entry informs how to interpret its contents.
+TypeSource[] type_sources
+	string type_name
+	string encoding
+	string raw_file_contents
+
+# Key-value pairs of extra information.
+KeyValue[] extra_information
+	string key
+	string value
+
+=== /naoqi_navigation_node/list_parameters ===
+Tipo: rcl_interfaces/srv/ListParameters
+# Recursively get parameters with unlimited depth.
+uint64 DEPTH_RECURSIVE=0
+
+# The list of parameter prefixes to query.
+string[] prefixes
+
+# Relative depth from given prefixes to return.
+#
+# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.
+uint64 depth
+
+---
+# The list of parameter names and their prefixes.
+ListParametersResult result
+	string[] names
+	string[] prefixes
+
+=== /naoqi_navigation_node/move_to ===
+Tipo: naoqi_utilities_msgs/srv/MoveTo
+# Request
+float32 x_coordinate
+float32 y_coordinate
+float32 theta_coordinate
+---
+
+=== /naoqi_navigation_node/navigate_to ===
+Tipo: naoqi_utilities_msgs/srv/MoveTo
+# Request
+float32 x_coordinate
+float32 y_coordinate
+float32 theta_coordinate
+---
+
+=== /naoqi_navigation_node/set_parameters ===
+Tipo: rcl_interfaces/srv/SetParameters
+# A list of parameters to set.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting each parameter succeeded or not and why.
+SetParametersResult[] results
+	bool successful
+	string reason
+
+=== /naoqi_navigation_node/set_parameters_atomically ===
+Tipo: rcl_interfaces/srv/SetParametersAtomically
+# A list of parameters to set atomically.
+#
+# This call will either set all values, or none of the values.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting all of the parameters succeeded or not and why.
+SetParametersResult result
+	bool successful
+	string reason
+
+=== /naoqi_navigation_node/start_exploring ===
+Tipo: naoqi_utilities_msgs/srv/Explore
+# Request
+float32 radius
+---
+
+=== /naoqi_navigation_node/stop_exploring ===
+Tipo: std_srvs/srv/Trigger
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_perception_node/describe_parameters ===
+Tipo: rcl_interfaces/srv/DescribeParameters
+# A list of parameters of which to get the descriptor.
+string[] names
+
+---
+# A list of the descriptors of all parameters requested in the same order
+# as they were requested. This list has the same length as the list of
+# parameters requested.
+ParameterDescriptor[] descriptors
+	string name
+	uint8 type
+	string description
+	#
+	string additional_constraints
+	bool read_only false
+	bool dynamic_typing false
+	#
+	FloatingPointRange[<=1] floating_point_range
+		float64 from_value
+		float64 to_value
+		#
+		#
+		#
+		#
+		float64 step
+	IntegerRange[<=1] integer_range
+		int64 from_value
+		int64 to_value
+		#
+		#
+		#
+		uint64 step
+
+=== /naoqi_perception_node/get_parameter_types ===
+Tipo: rcl_interfaces/srv/GetParameterTypes
+# A list of parameter names.
+# TODO(wjwwood): link to parameter naming rules.
+string[] names
+
+---
+# List of types which is the same length and order as the provided names.
+#
+# The type enum is defined in ParameterType.msg. ParameterType.PARAMETER_NOT_SET
+# indicates that the parameter is not currently set.
+uint8[] types
+
+=== /naoqi_perception_node/get_parameters ===
+Tipo: rcl_interfaces/srv/GetParameters
+# TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter "names"
+# in general, then link to that.
+#
+# For more information about parameters and naming rules, see:
+# https://design.ros2.org/articles/ros_parameters.html
+# https://github.com/ros2/design/pull/241
+
+# A list of parameter names to get.
+string[] names
+
+---
+# List of values which is the same length and order as the provided names. If a
+# parameter was not yet set, the value will have PARAMETER_NOT_SET as the
+# type.
+ParameterValue[] values
+	uint8 type
+	bool bool_value
+	int64 integer_value
+	float64 double_value
+	string string_value
+	byte[] byte_array_value
+	bool[] bool_array_value
+	int64[] integer_array_value
+	float64[] double_array_value
+	string[] string_array_value
+
+=== /naoqi_perception_node/get_type_description ===
+Tipo: type_description_interfaces/srv/GetTypeDescription
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
+string type_name
+
+# REP-2011 RIHS hash string.
+string type_hash
+
+# Whether to return the original idl/msg/etc. source file(s) in the response.
+bool include_type_sources true
+---
+# True if the type description information is available and populated in the response.
+# If false, all other fields except `failure_reason` are considered undefined.
+bool successful
+# If `successful` is false, contains a reason for failure.
+# If `successful` is true, this is left empty.
+string failure_reason
+
+# The parsed type description which can be used programmatically.
+TypeDescription type_description
+	IndividualTypeDescription type_description
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+	IndividualTypeDescription[] referenced_type_descriptions
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+
+# A list containing the interface definition source text of the requested type,
+# plus all types it recursively depends on.
+# Each source text is a copy of the original contents of the
+# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.
+# Sources can be matched with IndividualTypeDescriptions by their `type_name`.
+# The `encoding` field of each entry informs how to interpret its contents.
+TypeSource[] type_sources
+	string type_name
+	string encoding
+	string raw_file_contents
+
+# Key-value pairs of extra information.
+KeyValue[] extra_information
+	string key
+	string value
+
+=== /naoqi_perception_node/list_parameters ===
+Tipo: rcl_interfaces/srv/ListParameters
+# Recursively get parameters with unlimited depth.
+uint64 DEPTH_RECURSIVE=0
+
+# The list of parameter prefixes to query.
+string[] prefixes
+
+# Relative depth from given prefixes to return.
+#
+# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.
+uint64 depth
+
+---
+# The list of parameter names and their prefixes.
+ListParametersResult result
+	string[] names
+	string[] prefixes
+
+=== /naoqi_perception_node/point_at ===
+Tipo: naoqi_utilities_msgs/srv/PointAt
+# Frame constants
+int32 FRAME_TORSO = 0
+int32 FRAME_WORLD = 1
+int32 FRAME_ROBOT = 2
+
+# Request
+string effector_name # e.g., "Arms", "LArm", "RArm"
+geometry_msgs/Point point # The point to look at in the specified frame
+	float64 x
+	float64 y
+	float64 z
+int32 frame
+float32 speed # Speed between 0.0 and 1.0
+---
+
+=== /naoqi_perception_node/set_parameters ===
+Tipo: rcl_interfaces/srv/SetParameters
+# A list of parameters to set.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting each parameter succeeded or not and why.
+SetParametersResult[] results
+	bool successful
+	string reason
+
+=== /naoqi_perception_node/set_parameters_atomically ===
+Tipo: rcl_interfaces/srv/SetParametersAtomically
+# A list of parameters to set atomically.
+#
+# This call will either set all values, or none of the values.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting all of the parameters succeeded or not and why.
+SetParametersResult result
+	bool successful
+	string reason
+
+=== /naoqi_perception_node/set_tracker_mode ===
+Tipo: naoqi_utilities_msgs/srv/SetTrackerMode
+# Request: "stop", "start_head", "start_move"
+string mode
+---
+# Response
+bool success
+string message
+
+=== /naoqi_speech_node/configure_speech ===
+Tipo: naoqi_utilities_msgs/srv/ConfigureSpeech
+# To update vocabulary, provide a non-empty list.
+string[] vocabulary
+
+# To update language, provide a non-empty string.
+string language
+
+# To update recognition settings, set 'update_recognition_settings' to true
+# and provide the desired values for the following booleans.
+bool update_recognition_settings
+bool recognition_enabled
+bool audio_expression_enabled
+bool visual_expression_enabled
+---
+bool success
+string message
+
+=== /naoqi_speech_node/describe_parameters ===
+Tipo: rcl_interfaces/srv/DescribeParameters
+# A list of parameters of which to get the descriptor.
+string[] names
+
+---
+# A list of the descriptors of all parameters requested in the same order
+# as they were requested. This list has the same length as the list of
+# parameters requested.
+ParameterDescriptor[] descriptors
+	string name
+	uint8 type
+	string description
+	#
+	string additional_constraints
+	bool read_only false
+	bool dynamic_typing false
+	#
+	FloatingPointRange[<=1] floating_point_range
+		float64 from_value
+		float64 to_value
+		#
+		#
+		#
+		#
+		float64 step
+	IntegerRange[<=1] integer_range
+		int64 from_value
+		int64 to_value
+		#
+		#
+		#
+		uint64 step
+
+=== /naoqi_speech_node/get_parameter_types ===
+Tipo: rcl_interfaces/srv/GetParameterTypes
+# A list of parameter names.
+# TODO(wjwwood): link to parameter naming rules.
+string[] names
+
+---
+# List of types which is the same length and order as the provided names.
+#
+# The type enum is defined in ParameterType.msg. ParameterType.PARAMETER_NOT_SET
+# indicates that the parameter is not currently set.
+uint8[] types
+
+=== /naoqi_speech_node/get_parameters ===
+Tipo: rcl_interfaces/srv/GetParameters
+# TODO(wjwwood): Decide on the rules for grouping, nodes, and parameter "names"
+# in general, then link to that.
+#
+# For more information about parameters and naming rules, see:
+# https://design.ros2.org/articles/ros_parameters.html
+# https://github.com/ros2/design/pull/241
+
+# A list of parameter names to get.
+string[] names
+
+---
+# List of values which is the same length and order as the provided names. If a
+# parameter was not yet set, the value will have PARAMETER_NOT_SET as the
+# type.
+ParameterValue[] values
+	uint8 type
+	bool bool_value
+	int64 integer_value
+	float64 double_value
+	string string_value
+	byte[] byte_array_value
+	bool[] bool_array_value
+	int64[] integer_array_value
+	float64[] double_array_value
+	string[] string_array_value
+
+=== /naoqi_speech_node/get_type_description ===
+Tipo: type_description_interfaces/srv/GetTypeDescription
+# ROS interface type name, in PACKAGE/NAMESPACE/TYPENAME format.
+string type_name
+
+# REP-2011 RIHS hash string.
+string type_hash
+
+# Whether to return the original idl/msg/etc. source file(s) in the response.
+bool include_type_sources true
+---
+# True if the type description information is available and populated in the response.
+# If false, all other fields except `failure_reason` are considered undefined.
+bool successful
+# If `successful` is false, contains a reason for failure.
+# If `successful` is true, this is left empty.
+string failure_reason
+
+# The parsed type description which can be used programmatically.
+TypeDescription type_description
+	IndividualTypeDescription type_description
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+	IndividualTypeDescription[] referenced_type_descriptions
+		string<=255 type_name
+		Field[] fields
+			string name
+			FieldType type
+				#
+				uint8 FIELD_TYPE_NOT_SET = 0
+				uint8 FIELD_TYPE_NESTED_TYPE = 1
+				uint8 FIELD_TYPE_INT8 = 2
+				uint8 FIELD_TYPE_UINT8 = 3
+				uint8 FIELD_TYPE_INT16 = 4
+				uint8 FIELD_TYPE_UINT16 = 5
+				uint8 FIELD_TYPE_INT32 = 6
+				uint8 FIELD_TYPE_UINT32 = 7
+				uint8 FIELD_TYPE_INT64 = 8
+				uint8 FIELD_TYPE_UINT64 = 9
+				uint8 FIELD_TYPE_FLOAT = 10
+				uint8 FIELD_TYPE_DOUBLE = 11
+				uint8 FIELD_TYPE_LONG_DOUBLE = 12
+				uint8 FIELD_TYPE_CHAR = 13
+				uint8 FIELD_TYPE_WCHAR = 14
+				uint8 FIELD_TYPE_BOOLEAN = 15
+				uint8 FIELD_TYPE_BYTE = 16
+				uint8 FIELD_TYPE_STRING = 17
+				uint8 FIELD_TYPE_WSTRING = 18
+				uint8 FIELD_TYPE_FIXED_STRING = 19
+				uint8 FIELD_TYPE_FIXED_WSTRING = 20
+				uint8 FIELD_TYPE_BOUNDED_STRING = 21
+				uint8 FIELD_TYPE_BOUNDED_WSTRING = 22
+				uint8 FIELD_TYPE_NESTED_TYPE_ARRAY = 49
+				uint8 FIELD_TYPE_INT8_ARRAY = 50
+				uint8 FIELD_TYPE_UINT8_ARRAY = 51
+				uint8 FIELD_TYPE_INT16_ARRAY = 52
+				uint8 FIELD_TYPE_UINT16_ARRAY = 53
+				uint8 FIELD_TYPE_INT32_ARRAY = 54
+				uint8 FIELD_TYPE_UINT32_ARRAY = 55
+				uint8 FIELD_TYPE_INT64_ARRAY = 56
+				uint8 FIELD_TYPE_UINT64_ARRAY = 57
+				uint8 FIELD_TYPE_FLOAT_ARRAY = 58
+				uint8 FIELD_TYPE_DOUBLE_ARRAY = 59
+				uint8 FIELD_TYPE_LONG_DOUBLE_ARRAY = 60
+				uint8 FIELD_TYPE_CHAR_ARRAY = 61
+				uint8 FIELD_TYPE_WCHAR_ARRAY = 62
+				uint8 FIELD_TYPE_BOOLEAN_ARRAY = 63
+				uint8 FIELD_TYPE_BYTE_ARRAY = 64
+				uint8 FIELD_TYPE_STRING_ARRAY = 65
+				uint8 FIELD_TYPE_WSTRING_ARRAY = 66
+				uint8 FIELD_TYPE_FIXED_STRING_ARRAY = 67
+				uint8 FIELD_TYPE_FIXED_WSTRING_ARRAY = 68
+				uint8 FIELD_TYPE_BOUNDED_STRING_ARRAY = 69
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_ARRAY = 70
+				uint8 FIELD_TYPE_NESTED_TYPE_BOUNDED_SEQUENCE = 97
+				uint8 FIELD_TYPE_INT8_BOUNDED_SEQUENCE = 98
+				uint8 FIELD_TYPE_UINT8_BOUNDED_SEQUENCE = 99
+				uint8 FIELD_TYPE_INT16_BOUNDED_SEQUENCE = 100
+				uint8 FIELD_TYPE_UINT16_BOUNDED_SEQUENCE = 101
+				uint8 FIELD_TYPE_INT32_BOUNDED_SEQUENCE = 102
+				uint8 FIELD_TYPE_UINT32_BOUNDED_SEQUENCE = 103
+				uint8 FIELD_TYPE_INT64_BOUNDED_SEQUENCE = 104
+				uint8 FIELD_TYPE_UINT64_BOUNDED_SEQUENCE = 105
+				uint8 FIELD_TYPE_FLOAT_BOUNDED_SEQUENCE = 106
+				uint8 FIELD_TYPE_DOUBLE_BOUNDED_SEQUENCE = 107
+				uint8 FIELD_TYPE_LONG_DOUBLE_BOUNDED_SEQUENCE = 108
+				uint8 FIELD_TYPE_CHAR_BOUNDED_SEQUENCE = 109
+				uint8 FIELD_TYPE_WCHAR_BOUNDED_SEQUENCE = 110
+				uint8 FIELD_TYPE_BOOLEAN_BOUNDED_SEQUENCE = 111
+				uint8 FIELD_TYPE_BYTE_BOUNDED_SEQUENCE = 112
+				uint8 FIELD_TYPE_STRING_BOUNDED_SEQUENCE = 113
+				uint8 FIELD_TYPE_WSTRING_BOUNDED_SEQUENCE = 114
+				uint8 FIELD_TYPE_FIXED_STRING_BOUNDED_SEQUENCE = 115
+				uint8 FIELD_TYPE_FIXED_WSTRING_BOUNDED_SEQUENCE = 116
+				uint8 FIELD_TYPE_BOUNDED_STRING_BOUNDED_SEQUENCE = 117
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_BOUNDED_SEQUENCE = 118
+				uint8 FIELD_TYPE_NESTED_TYPE_UNBOUNDED_SEQUENCE = 145
+				uint8 FIELD_TYPE_INT8_UNBOUNDED_SEQUENCE = 146
+				uint8 FIELD_TYPE_UINT8_UNBOUNDED_SEQUENCE = 147
+				uint8 FIELD_TYPE_INT16_UNBOUNDED_SEQUENCE = 148
+				uint8 FIELD_TYPE_UINT16_UNBOUNDED_SEQUENCE = 149
+				uint8 FIELD_TYPE_INT32_UNBOUNDED_SEQUENCE = 150
+				uint8 FIELD_TYPE_UINT32_UNBOUNDED_SEQUENCE = 151
+				uint8 FIELD_TYPE_INT64_UNBOUNDED_SEQUENCE = 152
+				uint8 FIELD_TYPE_UINT64_UNBOUNDED_SEQUENCE = 153
+				uint8 FIELD_TYPE_FLOAT_UNBOUNDED_SEQUENCE = 154
+				uint8 FIELD_TYPE_DOUBLE_UNBOUNDED_SEQUENCE = 155
+				uint8 FIELD_TYPE_LONG_DOUBLE_UNBOUNDED_SEQUENCE = 156
+				uint8 FIELD_TYPE_CHAR_UNBOUNDED_SEQUENCE = 157
+				uint8 FIELD_TYPE_WCHAR_UNBOUNDED_SEQUENCE = 158
+				uint8 FIELD_TYPE_BOOLEAN_UNBOUNDED_SEQUENCE = 159
+				uint8 FIELD_TYPE_BYTE_UNBOUNDED_SEQUENCE = 160
+				uint8 FIELD_TYPE_STRING_UNBOUNDED_SEQUENCE = 161
+				uint8 FIELD_TYPE_WSTRING_UNBOUNDED_SEQUENCE = 162
+				uint8 FIELD_TYPE_FIXED_STRING_UNBOUNDED_SEQUENCE = 163
+				uint8 FIELD_TYPE_FIXED_WSTRING_UNBOUNDED_SEQUENCE = 164
+				uint8 FIELD_TYPE_BOUNDED_STRING_UNBOUNDED_SEQUENCE = 165
+				uint8 FIELD_TYPE_BOUNDED_WSTRING_UNBOUNDED_SEQUENCE = 166
+				uint8 type_id 0
+				uint64 capacity
+				uint64 string_capacity
+				string<=255 nested_type_name
+			string default_value
+
+# A list containing the interface definition source text of the requested type,
+# plus all types it recursively depends on.
+# Each source text is a copy of the original contents of the
+# .msg, .srv, .action, .idl, or other file if it exists, including comments and whitespace.
+# Sources can be matched with IndividualTypeDescriptions by their `type_name`.
+# The `encoding` field of each entry informs how to interpret its contents.
+TypeSource[] type_sources
+	string type_name
+	string encoding
+	string raw_file_contents
+
+# Key-value pairs of extra information.
+KeyValue[] extra_information
+	string key
+	string value
+
+=== /naoqi_speech_node/get_volume ===
+Tipo: naoqi_utilities_msgs/srv/GetVolume
+# Request
+---
+# Response
+int32 volume
+
+=== /naoqi_speech_node/list_parameters ===
+Tipo: rcl_interfaces/srv/ListParameters
+# Recursively get parameters with unlimited depth.
+uint64 DEPTH_RECURSIVE=0
+
+# The list of parameter prefixes to query.
+string[] prefixes
+
+# Relative depth from given prefixes to return.
+#
+# Use DEPTH_RECURSIVE to get the recursive parameters and prefixes for each prefix.
+uint64 depth
+
+---
+# The list of parameter names and their prefixes.
+ListParametersResult result
+	string[] names
+	string[] prefixes
+
+=== /naoqi_speech_node/play_sound ===
+Tipo: naoqi_utilities_msgs/srv/PlaySound
+# Request
+string file_path
+---
+# Response
+bool success
+string message
+
+=== /naoqi_speech_node/play_web_stream ===
+Tipo: naoqi_utilities_msgs/srv/PlayWebStream
+# Request
+string url # URL of the audio stream
+---
+# Response
+bool success
+string message
+
+=== /naoqi_speech_node/say ===
+Tipo: naoqi_utilities_msgs/srv/Say
+# Request
+string text
+string language
+bool animated
+bool asynchronous
+---
+# Response
+bool success
+string message
+
+=== /naoqi_speech_node/set_parameters ===
+Tipo: rcl_interfaces/srv/SetParameters
+# A list of parameters to set.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting each parameter succeeded or not and why.
+SetParametersResult[] results
+	bool successful
+	string reason
+
+=== /naoqi_speech_node/set_parameters_atomically ===
+Tipo: rcl_interfaces/srv/SetParametersAtomically
+# A list of parameters to set atomically.
+#
+# This call will either set all values, or none of the values.
+Parameter[] parameters
+	string name
+	ParameterValue value
+		uint8 type
+		bool bool_value
+		int64 integer_value
+		float64 double_value
+		string string_value
+		byte[] byte_array_value
+		bool[] bool_array_value
+		int64[] integer_array_value
+		float64[] double_array_value
+		string[] string_array_value
+
+---
+# Indicates whether setting all of the parameters succeeded or not and why.
+SetParametersResult result
+	bool successful
+	string reason
+
+=== /naoqi_speech_node/set_volume ===
+Tipo: naoqi_utilities_msgs/srv/SetVolume
+# Request
+int32 volume # 0-100
+---
+# Response
+bool success
+string message
+
+=== /naoqi_speech_node/shut_up ===
+Tipo: std_srvs/srv/Trigger
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_speech_node/stop_all_sounds ===
+Tipo: std_srvs/srv/Trigger
+---
+bool success   # indicate successful run of triggered service
+string message # informational, e.g. for error messages
+
+=== /naoqi_miscellaneous_node/describe_parameters ===
+Tipo: rcl_interfaces/srv/DescribeParameters
+# A list of parameters of which to get the descriptor.
+string[] names
+
+---
+# A list of the descriptors of all parameters requested in the same order
+# as they were requested. This list has the same length as the list of
+# parameters requested.
+ParameterDescriptor[] descriptors
+	string name
+	uint8 type
+	string description
+	#
+	string additional_constraints
+	bool read_only false
+	bool dynamic_typing false
+	#
+	FloatingPointRange[<=1] floating_point_range
+		float64 from_value
+		float64 to_value
+		#
+		#
+		#
+		#
+		float64 step
+	IntegerRange[<=1] integer_range
+		int64 from_value
+		int64 to_value
+		#
+		#
+		#
+		uint64 step
+
+=== /naoqi_miscellaneous_node/get_parameter_types ===
