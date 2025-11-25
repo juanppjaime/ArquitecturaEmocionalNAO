@@ -135,15 +135,18 @@ Profesor asesor:
 Asistente graduado: 
 **David Cuevas Alba.**
 
-Universidad de los Andes – Ingeniería de Sistemas y Computación  
-Bogotá, Colombia 
-Agosto - Diciembre (2025)
+
+**Universidad de los Andes – Ingeniería de Sistemas y Computación  
+Bogotá, Colombia<br>
+Agosto - Diciembre (2025)**
+
 ---
 
 ## Licencia
 
 Este repositorio se publica con fines académicos.  
 Si deseas reutilizar código o extender el sistema, por favor cita el proyecto y conserva los créditos correspondientes.
+
 
 
 
