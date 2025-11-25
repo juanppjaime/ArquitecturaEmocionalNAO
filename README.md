@@ -127,7 +127,7 @@ Los resultados mostraron alta aceptación en claridad, comprensión de intenció
 Proyecto desarrollado por:  
 **Juan Pablo Peña Jaime**  
 
-## Equipo de Apoyo
+### Equipo de Apoyo
 
 Profesor asesor: 
 **Fernando De la Rosa Rosero.**
@@ -144,5 +144,6 @@ Agosto - Diciembre (2025)
 
 Este repositorio se publica con fines académicos.  
 Si deseas reutilizar código o extender el sistema, por favor cita el proyecto y conserva los créditos correspondientes.
+
 
 
